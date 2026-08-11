@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #070414;
+  --purple: #8b5cf6;
+  --pink: #ff3cac;
+  --orange: #ff9f43;
+  --cyan: #38f9d7;
+  --text: #fff4ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 65%,
+      rgba(255, 60, 172, 0.16),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #080516 0%,
+      #120624 55%,
+      #05020d 100%
+    );
+  color: var(--text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.demo {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.synthwave {
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  width: min(90vw, 900px);
+  min-height: 500px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 6, 35, 0.15),
+      rgba(5, 2, 13, 0.85)
+    );
+}
+
+.grid {
+  position: absolute;
+  z-index: -1;
+  inset: 48% -20% -35%;
+  transform: perspective(320px) rotateX(58deg);
+  transform-origin: center top;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(139, 92, 246, 0.55) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 60, 172, 0.55) 1px,
+      transparent 1px
+    );
+  background-size: 55px 55px;
+  animation: grid-scroll 3s linear infinite;
+  will-change: background-position;
+}
+
+.grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(7, 4, 20, 0.95)
+    );
+}
+
+.sun {
+  position: absolute;
+  z-index: -2;
+  top: 18%;
+  width: min(35vw, 260px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      var(--orange) 0 8px,
+      transparent 8px 14px
+    );
+  box-shadow:
+    0 0 30px rgba(255, 159, 67, 0.65),
+    0 0 70px rgba(255, 60, 172, 0.4);
+  opacity: 0.9;
+  animation: sun-pulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.synthwave-text {
+  position: relative;
+  margin: 0;
+  font-size: clamp(2.5rem, 10vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-shadow:
+    0 2px 0 var(--pink),
+    0 5px 0 var(--purple),
+    0 0 12px rgba(255, 60, 172, 0.95),
+    0 0 30px rgba(139, 92, 246, 0.85),
+    0 0 60px rgba(56, 249, 215, 0.35);
+  animation: text-flicker 4s ease-in-out infinite;
+  will-change: transform, text-shadow;
+}
+
+.synthwave-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.25em;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cyan),
+    var(--pink),
+    transparent
+  );
+  box-shadow:
+    0 0 12px var(--cyan),
+    0 0 25px var(--pink);
+  transform: scaleX(0.2);
+  transform-origin: center;
+  animation: line-sweep 3s ease-in-out infinite;
+}
+
+.subtitle {
+  margin: 1.75rem 0 0;
+  color: rgba(255, 244, 255, 0.65);
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+@keyframes grid-scroll {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 55px, 0 55px;
+  }
+}
+
+@keyframes sun-pulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes text-flicker {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes line-sweep {
+  0%,
+  100% {
+    transform: scaleX(0.2);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scaleX(0.9);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid,
+  .sun,
+  .synthwave-text,
+  .synthwave-text::after {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .synthwave {
+    min-height: 420px;
+  }
+
+  .synthwave-text {
+    letter-spacing: 0.05em;
+  }
+
+  .grid {
+    background-size: 40px 40px;
+  }
+
+  .subtitle {
+    letter-spacing: 0.12em;
+  }
+}

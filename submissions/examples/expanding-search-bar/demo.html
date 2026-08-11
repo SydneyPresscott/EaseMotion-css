@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Pure CSS expanding search bar animation."
+  >
+
+  <title>Pure CSS Expanding Search Bar</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="demo">
+    <p class="eyebrow">EaseMotion CSS</p>
+
+    <h1>Expanding Search Bar</h1>
+
+    <p class="description">
+      A lightweight search field that smoothly expands when focused.
+      Built entirely with HTML and CSS.
+    </p>
+
+    <section class="search-demo" aria-label="Search bar demo">
+      <form class="search-container" role="search">
+        <label class="search-label" for="site-search">
+          Search
+        </label>
+
+        <input
+          class="search-input"
+          id="site-search"
+          name="q"
+          type="search"
+          placeholder="Search..."
+          autocomplete="off"
+        >
+
+        <button
+          class="search-button"
+          type="submit"
+          aria-label="Submit search"
+        >
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <circle
+              cx="10.8"
+              cy="10.8"
+              r="6.8"
+            ></circle>
+
+            <path
+              d="m16 16 5 5"
+            ></path>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+    <p class="instruction">
+      Focus the search field to expand it.
+    </p>
+  </main>
+</body>
+</html>

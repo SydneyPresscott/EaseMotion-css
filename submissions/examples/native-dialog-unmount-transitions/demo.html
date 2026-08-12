@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Native Dialog & Unmount Transitions</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Native Dialog & Popover Transitions</h1>
+
+<div class="wrapper">
+
+<button onclick="dialog.showModal()">
+Open Dialog
+</button>
+
+<dialog id="dialog" class="ease-dialog-bounce">
+
+<h2>Native Dialog</h2>
+
+<p>
+Animated using
+<strong>@starting-style</strong> and
+<strong>transition-behavior</strong>.
+</p>
+
+<button onclick="dialog.close()">
+Close
+</button>
+
+</dialog>
+
+<button popovertarget="menu">
+Open Popover
+</button>
+
+<div id="menu"
+popover
+class="popover ease-popover-slide-up">
+
+<h3>Popover</h3>
+
+<p>
+Smooth native popover transition.
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
